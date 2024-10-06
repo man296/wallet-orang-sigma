@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wallet Eman Sigma</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .header .time {
+            font-size: 16px;
+        }
+        .header .status {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+        }
+        .header .status i {
+            margin-left: 5px;
+        }
+        .wallet {
+            background-color: #161b22;
+            border-radius: 20px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .wallet i {
+            margin-right: 5px;
+        }
+        .balance {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+        .address {
+            font-size: 14px;
+            color: #8b949e;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .actions div {
+            text-align: center;
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: transform 0.1s; /* Animation for click effect */
+        }
+        .actions div:active {
+            transform: scale(0.9); /* Scale down on click */
+        }
+        .actions i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .actions span {
+            display: block;
+            font-size: 14px;
+        }
+        .coins {
+            background-color: #161b22;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .coin {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #2d333b;
+        }
+        .coin:last-child {
+            border-bottom: none;
+        }
+        .coin img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .coin .info {
+            display: flex;
+            align-items: center;
+        }
+        .coin .info div {
+            text-align: left;
+        }
+        .coin .info .name {
+            font-size: 16px;
+        }
+        .coin .info .value {
+            font-size: 14px;
+            color: #8b949e;
+        }
+        .coin .change {
+            color: #3FFF00;
+        }
+        .coin .amount {
+            text-align: right;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #161b22;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer div {
+            text-align: center;
+        }
+        .footer i {
+            font-size: 24px;
+        }
+        .footer span {
+            display: block;
+            font-size: 12px;
+        }
+        .footer .active {
+            color: #58a6ff;
+        }
+        /* Notifikasi */
+        .notification {
+            display: none;
+            background-color: #ffcc00;
+            color: #000;
+            padding: 15px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            z-index: 1000;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* Styling untuk tombol koin */
+        .coins a {
+            text-decoration: none; /* Menghapus garis bawah pada link */
+            color: inherit; /* Warna teks mengikuti elemen yang ada */
+        }
+
+        .coins a:hover {
+            background-color: #2d333b; /* Warna latar belakang saat hover */
+            border-radius: 10px; /* Sudut melingkar */
+            transition: background-color 0.3s; /* Animasi transisi */
+        }
+    </style>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}`;
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000); // Notifikasi hilang setelah 3 detik
+        }
+
+        function handleKirim() {
+            showNotification('Fitur Kirim sedang dalam pemeliharaan.');
+        }
+
+        function handleTerima() {
+            showNotification('Fitur Terima sedang dalam pemeliharaan.');
+        }
+
+        function handleBeliJual() {
+            showNotification('Fitur Beli & Jual akan segera tersedia.');
+        }
+
+        setInterval(updateTime, 1000); // Update setiap detik
+        window.onload = updateTime; // Set waktu saat halaman dimuat
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="time" id="time">21:06</div>
+        <div class="status">
+            <span>100,8 GB/s</span>
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+            <span>1000%</span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="wallet">
+            <i class="fas fa-wallet"></i>
+            DOMPET AING
+        </div>
+        <div class="balance">52.218.384 Rp</div>
+        <div class="address">Alamat Anda: EMAN...bTC</div>
+        <div class="actions">
+            <div onclick="handleKirim()">
+                <i class="fas fa-arrow-up"></i>
+                <span>Kirim</span>
+            </div>
+            <div onclick="handleTerima()">
+                <i class="fas fa-arrow-down"></i>
+                <span>Terima</span>
+            </div>
+            <div onclick="handleBeliJual()">
+                <i class="fas fa-dollar-sign"></i>
+                <span>Beli &amp; Jual</span>
+            </div>
+        </div>
+        <div class="coins">
+            <a href="https://www.instagram.com/eman296_" class="coin">
+                <div class="info">
+                    <img alt="ig logo" src="ig.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <div>
+                        <div class="name">Man Coin</div>
+                        <div class="value">2,281,130 Rp <span class="change">+22%</span></div>
+                    </div>
+                </div>
+                <div class="amount">
+                    <div>22</div>
+                    <div>50.184.860 Rp</div>
+                </div>
+            </a>
+            <a href="https://github.com/man296" class="coin">
+                <div class="info">
+                    <img alt="git logo" src="github.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <div>
+                        <div class="name">Git <span class="badge">Man</span></div>
+                        <div class="value">82,332 Rp <span class="change">+2222%</span></div>
+                    </div>
+                </div>
+                <div class="amount">
+                    <div>22</div>
+                    <div>1.811.304 Rp</div>
+                </div>
+            </a>
+            <a href="https://x.com/emanpedia" class="coin">
+                <div class="info">
+                    <img alt="x logo" src="x.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <div>
+                        <div class="name">X Man</div>
+                        <div class="value">100 Rp <span class="change">+22222%</span></div>
+                    </div>
+                </div>
+                <div class="amount">
+                    <div>2222</div>
+                    <div>222,220 Rp</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="active">
+            <i class="fas fa-wallet"></i>
+            <span>Dompet</span>
+        </div>
+        <div>
+            <i class="fas fa-bolt"></i>
+            <span>Kegiatan</span>
+        </div>
+        <div>
+            <a href="https://www.yahoo.com" target="_blank" style="text-decoration: none; color: inherit;">
+                <i class="fas fa-compass"></i>
+                <span>Peramban</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Notifikasi -->
+    <div id="notification" class="notification"></div>
+</body>
+</html>
