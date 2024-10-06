@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet Eman Sigma</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
@@ -19,9 +21,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
+            flex-wrap: nowrap; /* Prevent wrapping on desktop */
         }
         .header .time {
             font-size: 16px;
+            margin-top: -20px;
         }
         .header .status {
             display: flex;
@@ -53,14 +57,18 @@
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
+            flex-wrap: wrap; 
         }
         .actions div {
             text-align: center;
-            cursor: pointer; /* Pointer cursor on hover */
-            transition: transform 0.1s; /* Animation for click effect */
+            cursor: pointer; 
+            transition: transform 0.1s; 
+            flex: 1 1 30%; 
+            max-width: 100px; 
+            margin: 10px; 
         }
         .actions div:active {
-            transform: scale(0.9); /* Scale down on click */
+            transform: scale(0.9); 
         }
         .actions i {
             font-size: 24px;
@@ -133,7 +141,6 @@
         .footer .active {
             color: #58a6ff;
         }
-        /* Notifikasi */
         .notification {
             display: none;
             background-color: #ffcc00;
@@ -148,17 +155,64 @@
             width: 300px;
             text-align: center;
         }
-
-        /* Styling untuk tombol koin */
         .coins a {
-            text-decoration: none; /* Menghapus garis bawah pada link */
-            color: inherit; /* Warna teks mengikuti elemen yang ada */
+            text-decoration: none; 
+            color: inherit; 
+        }
+        .coins a:hover {
+            background-color: #2d333b; 
+            border-radius: 10px; 
+            transition: background-color 0.3s; 
         }
 
-        .coins a:hover {
-            background-color: #2d333b; /* Warna latar belakang saat hover */
-            border-radius: 10px; /* Sudut melingkar */
-            transition: background-color 0.3s; /* Animasi transisi */
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack elements vertically on mobile */
+                align-items: flex-start;
+                padding: 10px; 
+            }
+            .header .status {
+                justify-content: flex-end; 
+                margin-top: 10px; 
+                width: 100%; /* Full width for status */
+                order: 1; /* Ensure status appears after time */
+            }
+            .header .time {
+                order: 2; /* Ensure time appears before status */
+            }
+            .actions {
+                justify-content: center;
+            }
+            .actions div {
+                margin: 10px;
+                flex: 1 1 30%;
+                max-width: 80px; 
+            }
+            .coins {
+                padding: 10px; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .balance {
+                font-size: 28px;
+            }
+            .address {
+                font-size: 12px;
+            }
+            .actions i {
+                font-size: 20px;
+            }
+            .actions span {
+                font-size: 12px;
+            }
+            .footer i {
+                font-size: 20px;
+            }
+            .footer span {
+                font-size: 10px;
+            }
         }
     </style>
     <script>
@@ -176,7 +230,7 @@
 
             setTimeout(() => {
                 notification.style.display = 'none';
-            }, 3000); // Notifikasi hilang setelah 3 detik
+            }, 3000);
         }
 
         function handleKirim() {
@@ -191,8 +245,8 @@
             showNotification('Fitur Beli & Jual akan segera tersedia.');
         }
 
-        setInterval(updateTime, 1000); // Update setiap detik
-        window.onload = updateTime; // Set waktu saat halaman dimuat
+        setInterval(updateTime, 1000);
+        window.onload = updateTime;
     </script>
 </head>
 <body>
@@ -230,7 +284,7 @@
         <div class="coins">
             <a href="https://www.instagram.com/eman296_" class="coin">
                 <div class="info">
-                    <img alt="ig logo" src="ig.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <img alt="ig logo" src="ig.png"/> 
                     <div>
                         <div class="name">Man Coin</div>
                         <div class="value">2,281,130 Rp <span class="change">+22%</span></div>
@@ -243,7 +297,7 @@
             </a>
             <a href="https://github.com/man296" class="coin">
                 <div class="info">
-                    <img alt="git logo" src="github.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <img alt="git logo" src="github.png"/> 
                     <div>
                         <div class="name">Git <span class="badge">Man</span></div>
                         <div class="value">82,332 Rp <span class="change">+2222%</span></div>
@@ -256,7 +310,7 @@
             </a>
             <a href="https://x.com/emanpedia" class="coin">
                 <div class="info">
-                    <img alt="x logo" src="x.png"/> <!-- Ganti dengan path gambar lokal -->
+                    <img alt="x logo" src="x.png"/> 
                     <div>
                         <div class="name">X Man</div>
                         <div class="value">100 Rp <span class="change">+22222%</span></div>
@@ -285,8 +339,6 @@
             </a>
         </div>
     </div>
-
-    <!-- Notifikasi -->
     <div id="notification" class="notification"></div>
 </body>
 </html>
